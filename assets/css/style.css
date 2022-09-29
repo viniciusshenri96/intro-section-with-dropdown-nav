@@ -1,0 +1,68 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap");
+
+:root {
+  /* colors */
+  --color-almostWhite: #fafafa;
+  --color-mediumGray: #696969;
+  --color-almostBlack: #141414;
+}
+
+*:focus,
+*:focus-visible {
+  outline: #696969 dotted 4px;
+  outline-offset: 4px;
+}
+
+ul {
+  list-style: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+/* 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    background-attachment: initial !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    -webkit-animation-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    -webkit-animation-delay: -1ms !important;
+    animation-delay: -1ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+} */
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Epilogue", sans-serif;
+  color: var(--color-mediumGray);
+  background-color: var(--color-almostWhite);
+  line-height: 1.5;
+
+  /* improves text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout */
+.container {
+  max-width: 1190px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
