@@ -18,13 +18,92 @@
   </head>
   <body>
     <header class="header">
-      <nav>
+      <nav class="nav">
         <img class="nav__img" src="./assets/images/logo.svg" alt="logo" />
         <ul class="nav__list">
-          <li><a class="nav__link" href="#">Features</a></li>
-          <li><a class="nav__link" href="#">Company</a></li>
-          <li><a class="nav__link" href="#">Careers</a></li>
-          <li><a class="nav__link" href="#">About</a></li>
+          <li class="nav__list-item">
+            <a class="nav__link" href="#">
+              Features
+
+              <img
+                class="nav__img"
+                src="./assets/images/icon-arrow-down.svg"
+                alt=""
+              />
+
+              <img
+                class="nav__img active"
+                src="./assets/images/icon-arrow-up.svg"
+                alt=""
+                data-active="1"
+                ;
+              />
+            </a>
+
+            <div
+              class="nav__options nav__options-box hidden data-active"
+              data-active="1"
+            >
+              <ul class="nav__options-list">
+                <li class="nav__options-item">
+                  <img src="./assets/images/icon-todo.svg" alt="" />
+                  <a class="nav__options-link" href="#">Todo List</a>
+                </li>
+
+                <li class="nav__options-item">
+                  <img src="./assets/images/icon-calendar.svg" alt="" />
+                  <a class="nav__options-link" href="#">Calendar</a>
+                </li>
+
+                <li class="nav__options-item">
+                  <img src="./assets/images/icon-reminders.svg" alt="" />
+                  <a class="nav__options-link" href="#">Reminders</a>
+                </li>
+
+                <li class="nav__options-item">
+                  <img src="./assets/images/icon-planning.svg" alt="" />
+                  <a class="nav__options-link" href="#">Planning</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav__list-item">
+            <a class="nav__link" href="#">
+              Company
+
+              <img
+                class="nav__img"
+                src="./assets/images/icon-arrow-down.svg"
+                alt=""
+              />
+              <img
+                class="nav__img active"
+                src="./assets/images/icon-arrow-up.svg"
+                alt=""
+              />
+            </a>
+
+            <div class="nav__options nav__options-company hidden">
+              <ul class="nav__options-list">
+                <li class="nav__options-item">
+                  <a class="nav__options-link" href="#">History</a>
+                </li>
+                <li class="nav__options-item">
+                  <a class="nav__options-link" href="#">Our Team</a>
+                </li>
+                <li class="nav__options-item">
+                  <a class="nav__options-link" href="#">Blog</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a class="nav__link" href="#">Careers</a>
+          </li>
+          <li>
+            <a class="nav__link" href="#">About</a>
+          </li>
         </ul>
       </nav>
       <div class="nav__btn-box">
@@ -32,8 +111,9 @@
         <a class="nav__btn-register" href="#">Register</a>
       </div>
     </header>
+
     <main>
-      <section class="hero">
+      <section class="hero container">
         <div class="hero__content">
           <h1 class="hero__title">Make remote work</h1>
           <p class="hero__desc">
@@ -53,10 +133,14 @@
             </ul>
           </div>
         </div>
-        <img src="./assets/images/image-hero-desktop.png" alt="" />
+        <img
+          class="hero__img"
+          src="./assets/images/image-hero-desktop.png"
+          alt=""
+        />
       </section>
     </main>
-
+    <!-- 
     <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
@@ -65,6 +149,7 @@
       . Coded by
       <a href="#">Your Name Here</a>
       .
-    </footer>
+    </footer> -->
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
