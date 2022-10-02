@@ -21,7 +21,6 @@ navList.addEventListener("click", function (e) {
 
     const hiddle = function (element) {
       const sibling = clicked[`${element}`].querySelectorAll(".nav__img");
-
       sibling[0].classList.remove("active");
       sibling[1].classList.add("active");
 
@@ -29,6 +28,7 @@ navList.addEventListener("click", function (e) {
         .querySelector(".nav__options")
         .classList.add("hidden");
     };
+
     navImg.forEach((img) => {
       if (img.classList.contains("active")) {
         img.classList.remove("active");
