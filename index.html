@@ -1,146 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
 
-    <link rel="stylesheet" href="./assets/css/style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- displays site properly based on user's device -->
 
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./images/favicon-32x32.png"
-    />
+  <link rel="stylesheet" href="./assets/css/style.css" />
 
-    <title>Intro section with dropdown navigation</title>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="nav">
-        <img class="nav__img" src="./assets/images/logo.svg" alt="logo" />
-        <ul class="nav__list">
-          <li class="nav__list-item">
-            <a class="nav__link font-link" href="#">
-              Features
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
 
-              <img
-                class="nav__img"
-                src="./assets/images/icon-arrow-down.svg"
-                alt=""
-              />
+  <title>Intro section with dropdown navigation</title>
+</head>
 
-              <img
-                class="nav__img active"
-                src="./assets/images/icon-arrow-up.svg"
-                alt=""
-                data-active="1"
-                ;
-              />
-            </a>
+<body>
+  <header class="header">
+    <img class="nav__logo" src="./assets/images/logo.svg" alt="logo" />
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__list-item">
+          <a class="nav__link nav__link-features font-link" href="#"> Features
+          </a>
+          <div class="nav__options nav__options-box">
+            <ul class="nav__options-list">
+              <li class="nav__options-item">
+                <img src="./assets/images/icon-todo.svg" alt="" />
+                <a class="nav__options-link font-link" href="#">Todo List</a>
+              </li>
 
-            <div
-              class="nav__options nav__options-box hidden data-active"
-              data-active="1"
-            >
-              <ul class="nav__options-list">
-                <li class="nav__options-item">
-                  <img src="./assets/images/icon-todo.svg" alt="" />
-                  <a class="nav__options-link font-link" href="#">Todo List</a>
-                </li>
+              <li class="nav__options-item">
+                <img src="./assets/images/icon-calendar.svg" alt="" />
+                <a class="nav__options-link font-link" href="#">Calendar</a>
+              </li>
 
-                <li class="nav__options-item">
-                  <img src="./assets/images/icon-calendar.svg" alt="" />
-                  <a class="nav__options-link font-link" href="#">Calendar</a>
-                </li>
+              <li class="nav__options-item">
+                <img src="./assets/images/icon-reminders.svg" alt="" />
+                <a class="nav__options-link font-link" href="#">Reminders</a>
+              </li>
 
-                <li class="nav__options-item">
-                  <img src="./assets/images/icon-reminders.svg" alt="" />
-                  <a class="nav__options-link font-link" href="#">Reminders</a>
-                </li>
-
-                <li class="nav__options-item">
-                  <img src="./assets/images/icon-planning.svg" alt="" />
-                  <a class="nav__options-link font-link" href="#">Planning</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav__list-item">
-            <a class="nav__link font-link" href="#">
-              Company
-
-              <img
-                class="nav__img"
-                src="./assets/images/icon-arrow-down.svg"
-                alt=""
-              />
-              <img
-                class="nav__img active"
-                src="./assets/images/icon-arrow-up.svg"
-                alt=""
-              />
-            </a>
-
-            <div class="nav__options nav__options-company hidden">
-              <ul class="nav__options-list">
-                <li class="">
-                  <a class="nav__options-link font-link" href="#">History</a>
-                </li>
-                <li class="nav__options-item">
-                  <a class="nav__options-link font-link" href="#">Our Team</a>
-                </li>
-                <li class="nav__options-item">
-                  <a class="nav__options-link font-link" href="#">Blog</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <a class="nav__link font-link" href="#">Careers</a>
-          </li>
-          <li>
-            <a class="nav__link font-link" href="#">About</a>
-          </li>
-        </ul>
-      </nav>
+              <li class="nav__options-item">
+                <img src="./assets/images/icon-planning.svg" alt="" />
+                <a class="nav__options-link font-link" href="#">Planning</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav__list-item">
+          <a class="nav__link nav__link-company font-link" href="#">
+            Company
+          </a>
+          <div class="nav__options nav__options-company">
+            <ul class="nav__options-list">
+              <li class="">
+                <a class="nav__options-link font-link" href="#">History</a>
+              </li>
+              <li class="nav__options-item">
+                <a class="nav__options-link font-link" href="#">Our Team</a>
+              </li>
+              <li class="nav__options-item">
+                <a class="nav__options-link font-link" href="#">Blog</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav__list-item">
+          <a class="nav__link font-link" href="#">Careers</a>
+        </li>
+        <li class="nav__list-item">
+          <a class="nav__link font-link" href="#">About</a>
+        </li>
+      </ul>
       <div class="nav__btn-box">
         <a class="nav__btn-login font-link" href="#">Login</a>
         <a class="nav__btn-register font-link" href="#">Register</a>
       </div>
-    </header>
+    </nav>
 
-    <main>
-      <section class="hero container">
-        <div class="hero__content">
-          <h1 class="hero__title">Make remote work</h1>
-          <p class="hero__desc">
-            Get your team in sync, no matter your location. Streamline
-            processes, create team rituals, and watch productivity soar.
-          </p>
-          <a class="hero__btn" href="#">Learn more</a>
+  </header>
 
-          <div class="hero__client">
-            <ul class="hero__client-box">
-              <li><img src="./assets/images/client-databiz.svg" alt="" /></li>
-              <li>
-                <img src="./assets/images/client-audiophile.svg" alt="" />
-              </li>
-              <li><img src="./assets/images/client-meet.svg" alt="" /></li>
-              <li><img src="./assets/images/client-maker.svg" alt="" /></li>
-            </ul>
-          </div>
+  <main>
+    <section class="hero container">
+      <div class="hero__content">
+        <h1 class="hero__title">Make remote work</h1>
+        <p class="hero__desc">
+          Get your team in sync, no matter your location. Streamline
+          processes, create team rituals, and watch productivity soar.
+        </p>
+        <a class="hero__btn" href="#">Learn more</a>
+
+        <div class="hero__client">
+          <ul class="hero__client-box">
+            <li><img src="./assets/images/client-databiz.svg" alt="" /></li>
+            <li>
+              <img src="./assets/images/client-audiophile.svg" alt="" />
+            </li>
+            <li><img src="./assets/images/client-meet.svg" alt="" /></li>
+            <li><img src="./assets/images/client-maker.svg" alt="" /></li>
+          </ul>
         </div>
-        <img
-          class="hero__img"
-          src="./assets/images/image-hero-desktop.png"
-          alt=""
-        />
-      </section>
-    </main>
-    <!-- 
+      </div>
+      <picture>
+        <source srcset="./assets/images/image-hero-mobile.png" media="(max-width: 600px)" />
+        <img class="hero__img" src="./assets/images/image-hero-desktop.png" alt="" />
+      </picture>
+    </section>
+  </main>
+  <!-- 
     <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
@@ -150,6 +115,7 @@
       <a href="#">Your Name Here</a>
       .
     </footer> -->
-    <script src="./assets/js/script.js"></script>
-  </body>
+  <script src="./assets/js/script.js"></script>
+</body>
+
 </html>
