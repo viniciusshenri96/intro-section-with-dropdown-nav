@@ -55,7 +55,7 @@ img {
 
 html,
 body {
-  height: 100%;
+  /* height: 100%; */
   overflow-x: hidden;
 }
 
@@ -100,6 +100,21 @@ body {
   /* justify-content: center; */
   gap: 62px;
   padding: 21px 40px 67px 41px;
+}
+
+button {
+  border: none;
+  background: none;
+  z-index: 2;
+  position: absolute;
+  top: 16px;
+}
+
+.menu {
+  display: none;
+}
+.close {
+  display: none;
 }
 
 .nav {
@@ -231,11 +246,6 @@ body {
   box-shadow: inset 0 0 0 1.5px var(--color-almostBlack);
 }
 
-button {
-  border: none;
-  background: none;
-}
-
 /* HERO */
 .hero {
   display: grid;
@@ -283,6 +293,18 @@ button {
 .hero__img {
   width: 480px;
   height: 640px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+}
+.overlay.active {
+  display: block;
 }
 
 /* RESPONSIVE */
@@ -334,7 +356,10 @@ button {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
+  .header {
+    justify-content: flex-end;
+  }
   .menu__box {
     position: absolute;
     top: 22px;
@@ -363,13 +388,31 @@ button {
     position: absolute;
     right: 0;
     top: 0;
-    /* z-index: 3; */
+    z-index: 1;
   }
 
-  .nav__logo {
+  .nav.active {
+    display: block;
+  }
+
+  .header__logo {
     position: absolute;
     top: 16px;
     left: 16px;
+  }
+
+  .menu {
+    display: block;
+    z-index: 1;
+  }
+  .menu.active {
+    display: none;
+  }
+  .close {
+    display: none;
+  }
+  .close.active {
+    display: block;
   }
 
   .nav__list {
