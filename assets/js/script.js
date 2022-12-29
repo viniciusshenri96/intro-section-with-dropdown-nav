@@ -1,83 +1,54 @@
 "use strict";
 
-const company = document.querySelector(".nav__link-company");
-const features = document.querySelector(".nav__link-features");
-const optionsCompany = document.querySelector(".nav__options-company");
-const optionsFeatures = document.querySelector(".nav__options-box");
-const nav = document.querySelector(".nav");
-const menuBtn = document.querySelector(".menu");
-const closeBtn = document.querySelector(".close");
-const overlay = document.querySelector(".overlay");
-const eventAdd = "click";
-const classAct = "active";
+const dropDownMenus = document.querySelectorAll("[data-dropdown]");
+const feacturesUp = document.querySelector(".features__up");
+const companyUp = document.querySelector(".company__up");
+const feacturesDown = document.querySelector(".features__down");
+const companyDown = document.querySelector(".company__down");
+console.log(dropDownMenus);
 
-const upDownCompany = function (e) {
+const handleClick = function (e) {
   e.preventDefault();
-  company.classList.toggle("active");
-  optionsCompany.classList.toggle("active");
-  if (features.classList.contains("active")) {
-    features.classList.remove("active");
-    optionsFeatures.classList.remove("active");
-  }
+  this.classList.add("active");
+  feacturesUp.classList.add("active");
+  companyUp.classList.add("active");
+  feacturesDown.classList.add("active");
+  companyDown.classList.add("active");
 
-  outsideClick(company, eventAdd, () => {
-    company.classList.remove(classAct);
-    optionsCompany.classList.remove(classAct);
+  outsideClick(this, ["touchstart", "click"], () => {
+    this.classList.remove("active");
+    feacturesUp.classList.remove("active");
+    companyUp.classList.remove("active");
+    feacturesDown.classList.remove("active");
+    companyDown.classList.remove("active");
   });
 };
 
-const upDownFeatures = function (e) {
-  e.preventDefault();
-  features.classList.toggle("active");
-  optionsFeatures.classList.toggle("active");
-  if (company.classList.contains("active")) {
-    company.classList.remove("active");
-    optionsCompany.classList.remove("active");
-  }
-
-  outsideClick(features, eventAdd, () => {
-    features.classList.remove(classAct);
-    optionsFeatures.classList.remove(classAct);
-  });
-};
-
-company.addEventListener("click", upDownCompany);
-features.addEventListener("click", upDownFeatures);
-
-menuBtn.addEventListener("click", function () {
-  nav.classList.add("active");
-  menuBtn.classList.add("active");
-  closeBtn.classList.add("active");
-  overlay.classList.add("active");
-
-  outsideClick(nav, eventAdd, () => {
-    nav.classList.remove("active");
-    menuBtn.classList.remove("active");
-    closeBtn.classList.remove("active");
-    overlay.classList.remove("active");
+dropDownMenus.forEach((menu) => {
+  ["touchstart", "click"].forEach((userEvent) => {
+    menu.addEventListener(userEvent, handleClick);
   });
 });
 
-closeBtn.addEventListener("click", function () {
-  nav.classList.remove("active");
-  menuBtn.classList.remove("active");
-  closeBtn.classList.remove("active");
-  overlay.classList.remove("active");
-});
-
-function outsideClick(element, eventAdd, callback) {
-  const html = document.querySelector("html");
+function outsideClick(element, events, callback) {
+  const html = document.documentElement;
   const outside = "data-outside";
 
+  // Só vai acontecer por causa do efeito bubble
   if (!element.hasAttribute(outside)) {
-    setTimeout(() => html.addEventListener(eventAdd, handleOutsideClick));
+    events.forEach((userEvent) => {
+      html.addEventListener(userEvent, handleOutsideClick);
+    });
     element.setAttribute(outside, "");
   }
-
+  // element.setAttribute(outside, '')
   function handleOutsideClick(event) {
     if (!element.contains(event.target)) {
       element.removeAttribute(outside);
-      html.removeEventListener(eventAdd, handleOutsideClick);
+      events.forEach((userEvent) => {
+        // Removendo o evento de click do html, para ele ocorrer apenas uma vez
+        html.removeEventListener(userEvent, handleOutsideClick);
+      });
       callback();
     }
   }
