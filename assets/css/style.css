@@ -77,14 +77,21 @@ body {
 }
 
 .header {
-  display: flex;
+  display: grid;
+  gap: 62px;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  padding-top: 32px;
+  padding-top: 21px;
   padding-bottom: 67px;
+  justify-content: space-between;
 }
 
-.header__logo {
-  padding-right: 62px;
+.header__mobile {
+  /* max-width: 1213px; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header__list {
@@ -112,6 +119,9 @@ body {
   display: flex;
   align-items: center;
   gap: 9px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 0px;
 }
 
 .header__btn {
@@ -150,6 +160,8 @@ body {
   position: relative;
   /* background-color: blue; */
   /* margin-bottom: 20px; */
+  display: grid;
+  /* gap: 40px; */
 }
 
 .dropdown-menu {
@@ -158,8 +170,7 @@ body {
   background: var(--color-almostWhite);
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.149126);
   border-radius: 10px;
-  top: 40px;
-
+  top: 56px;
   right: 0;
   display: grid;
   row-gap: 1rem;
@@ -175,21 +186,17 @@ body {
   display: none;
 }
 
-[data-dropdown]:hover .dropdown-menu,
 [data-dropdown].active .dropdown-menu {
   display: grid;
   animation: show-up 0.3s forwards;
 }
 
-[data-dropdown]:hover .features__up,
-[data-dropdown]:hover .company__up,
 [data-dropdown].active .features__up,
 [data-dropdown].active .company__up {
   display: block;
+  /* animation: show-rotate 0.3s forwards; */
 }
 
-[data-dropdown]:hover .features__down,
-[data-dropdown]:hover .company__down,
 [data-dropdown].active .features__down,
 [data-dropdown].active .company__down {
   display: none;
@@ -203,6 +210,15 @@ body {
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes show-rotate {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0);
   }
 }
 
@@ -234,4 +250,155 @@ a:visited {
 a:hover,
 a:active {
   color: var(--color-almostBlack);
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: rgba(0, 0, 0, 0.149126);
+  display: none;
+}
+
+/* Menu Mobile */
+.header__menu {
+  background: none;
+  border: none;
+  display: none;
+}
+
+@media (max-width: 810px) {
+  .container {
+    padding: 0 16px;
+  }
+  .header {
+    justify-content: space-between;
+    padding-top: 16px;
+    padding-bottom: 24px;
+  }
+
+  .header__menu {
+    width: max-content;
+    justify-self: end;
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  .header__menu.active::after {
+    content: "";
+    display: block;
+    width: 26px;
+    height: 26px;
+    background: url(../images/icon-close-menu.svg) no-repeat;
+  }
+
+  .menu-close {
+    display: block;
+  }
+  .menu-close.active {
+    display: none;
+  }
+
+  .header__mobile {
+    position: absolute;
+    /* padding: 78px 21px 0 24px; */
+    top: 0;
+    right: 0;
+    z-index: 1;
+    /* height: 100vh; */
+    background: #fafafa;
+    grid-template-columns: 1fr;
+    align-content: start;
+    gap: 32px;
+  }
+
+  .header__mobile.active {
+    display: block;
+  }
+
+  .header__btn {
+    flex-direction: column;
+    max-width: 100%;
+    gap: 1rem;
+    padding: 0 21px 0 24px;
+    height: 100vh;
+    display: none;
+  }
+
+  /* 
+
+  .menu-open {
+    display: none;
+  }
+  .menu-open.active {
+    display: block;
+  } */
+
+  .btn--transparent {
+    padding: 13px 67px;
+  }
+
+  .header__list {
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+    padding: 78px 21px 0 24px;
+
+    gap: 1rem;
+    display: none;
+  }
+
+  .header__list.active,
+  .header__btn.active {
+    display: flex;
+  }
+
+  .header__link-flex {
+    padding: 0;
+  }
+
+  .dropdown-menu {
+    position: static;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 10px;
+    align-content: start;
+    z-index: 200;
+  }
+
+  [data-dropdown] {
+    gap: 18px;
+  }
+
+  .header__link:link,
+  .header__link:visited {
+    justify-content: end;
+  }
+
+  .header__list-features {
+    width: 119px;
+    height: 152px;
+  }
+
+  .header__list-company {
+    width: 76px;
+    height: max-content;
+    margin-bottom: 8px;
+  }
+
+  [data-dropdown].active .dropdown-menu {
+    margin-left: 24px;
+  }
+
+  .header__link-flex {
+    justify-self: start;
+  }
+
+  .overlay.active {
+    display: block;
+  }
 }
