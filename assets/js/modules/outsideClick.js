@@ -11,6 +11,7 @@ export default function clickOutside(element, events, callback) {
   }
   // element.setAttribute(outside, '')
   function handleOutsideClick(event) {
+    console.log(element.contains(event.target));
     if (!element.contains(event.target)) {
       element.removeAttribute(outside);
       setTimeout(() => {

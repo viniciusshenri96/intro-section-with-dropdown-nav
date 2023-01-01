@@ -16,7 +16,7 @@ const overlay = document.querySelector(".overlay");
 
 // Dropdown menu
 const classActive = "active";
-const classListPro = function (pro) {
+const classListProDropdown = function (pro) {
   feacturesUp.classList[pro](classActive);
   companyUp.classList[pro](classActive);
   feacturesDown.classList[pro](classActive);
@@ -25,18 +25,12 @@ const classListPro = function (pro) {
 
 const handleClick = function (e) {
   e.preventDefault();
-  this.classList.toggle(classActive);
-  feacturesUp.classList.toggle(classActive);
-  companyUp.classList.toggle(classActive);
-  feacturesDown.classList.toggle(classActive);
-  companyDown.classList.toggle(classActive);
+  this.classList.add(classActive);
+  classListProDropdown("add");
 
   outside(this, "click", () => {
     this.classList.remove(classActive);
-    feacturesUp.classList.remove(classActive);
-    companyUp.classList.remove(classActive);
-    feacturesDown.classList.remove(classActive);
-    companyDown.classList.remove(classActive);
+    classListProDropdown("remove");
   });
 };
 
@@ -45,19 +39,20 @@ dropDownMenu.forEach((menu) => {
 });
 
 // Menu Mobile
+
+const classListProMenuMobile = function (pro) {
+  headerList.classList[pro](classActive);
+  headerBtn.classList[pro](classActive);
+  headerMenu.classList[pro](classActive);
+  menuClose.classList[pro](classActive);
+  overlay.classList[pro](classActive);
+};
+
 const openMenu = function () {
-  headerList.classList.toggle("active");
-  headerBtn.classList.toggle("active");
-  headerMenu.classList.toggle("active");
-  menuClose.classList.toggle("active");
-  overlay.classList.toggle("active");
+  classListProMenuMobile("add");
 
   outside(headerList, "click", () => {
-    headerList.classList.remove("active");
-    headerBtn.classList.remove("active");
-    headerMenu.classList.remove("active");
-    menuClose.classList.remove("active");
-    overlay.classList.remove("active");
+    classListProMenuMobile("remove");
   });
 };
 
