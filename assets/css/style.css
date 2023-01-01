@@ -62,12 +62,6 @@ a:link {
   text-decoration: none;
 }
 
-.container {
-  max-width: 1190px;
-  padding: 0 40px;
-  margin: 0 auto;
-}
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
@@ -76,36 +70,34 @@ body {
   background: var(--color-almostWhite);
 }
 
+/* class reusable */
+.font-link {
+  font: var(--fw-medium) 14px / 1.14 "Epilogue", sans-serif;
+}
+
 .header {
   display: grid;
-  gap: 62px;
+  gap: 3.875rem;
   grid-template-columns: auto 1fr;
   align-items: center;
-  padding-top: 21px;
-  padding-bottom: 67px;
-  justify-content: space-between;
-  /* margin-left: 40px;
-  margin-right: 40px; */
+  padding: 1.313rem 0 4.188rem 0;
+  margin: 0 2.5rem;
 }
 
 .header__mobile {
-  /* max-width: 1213px; */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .header__list {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 2.5rem;
 }
 
 .header__link:link,
 .header__link:visited,
 .header__link svg path {
-  font: var(--fw-medium) 14px / 1.14 "Epilogue", sans-serif;
   color: var(--color-mediumGray);
   transition: 0.4s ease-in-out;
 }
@@ -120,23 +112,20 @@ body {
 .header__link-flex {
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 0px;
+  gap: 0.563rem;
+  padding: 1.25rem 0 1.25rem 0;
 }
 
 .header__btn {
-  margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 2.5rem;
+  margin-left: auto;
 }
 
 .btn:link,
 .btn:visited {
   display: inline-block;
-  font: var(--fw-medium) 14px / 1.14 "Epilogue", sans-serif;
   color: var(--color-mediumGray);
   transition: 0.4s ease-in-out;
 }
@@ -147,35 +136,30 @@ body {
 }
 
 .btn--transparent {
-  padding: 13px 22px;
-  /* border: 2px solid var(--color-mediumGray); */
-  box-shadow: 0 0 0 1.5px var(--color-mediumGray);
-  border-radius: 14px;
+  padding: 0.813rem 1.375rem;
+  box-shadow: 0 0 0 0.094rem var(--color-mediumGray);
+  border-radius: 0.875rem;
 }
 
 .btn--transparent:hover {
-  box-shadow: 0 0 0 1.5px var(--color-almostBlack);
+  box-shadow: 0 0 0 0.094rem var(--color-almostBlack);
 }
 
 /* Dropdown Menu */
 [data-dropdown] {
   position: relative;
-  /* background-color: blue; */
-  /* margin-bottom: 20px; */
-  display: grid;
-  /* gap: 40px; */
 }
 
 .dropdown-menu {
   position: absolute;
-  padding: 24px;
-  background: var(--color-almostWhite);
-  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.149126);
-  border-radius: 10px;
-  top: 56px;
+  top: 3.5rem;
   right: 0;
   display: grid;
   row-gap: 1rem;
+  padding: 1.5rem;
+  background: var(--color-almostWhite);
+  box-shadow: 0 0.625rem 2.5rem rgba(0, 0, 0, 0.149126);
+  border-radius: 0.625rem;
   z-index: 200;
 }
 
@@ -188,6 +172,11 @@ body {
   display: none;
 }
 
+.features__down,
+.company__down {
+  animation: arr-drop 0.3s forwards;
+}
+
 [data-dropdown].active .dropdown-menu {
   display: grid;
   animation: show-up 0.3s forwards;
@@ -196,7 +185,7 @@ body {
 [data-dropdown].active .features__up,
 [data-dropdown].active .company__up {
   display: block;
-  /* animation: show-rotate 0.3s forwards; */
+  animation: arr-up 0.3s forwards;
 }
 
 [data-dropdown].active .features__down,
@@ -215,7 +204,7 @@ body {
   }
 }
 
-@keyframes show-rotate {
+@keyframes arr-up {
   from {
     transform: rotate(180deg);
   }
@@ -224,33 +213,41 @@ body {
   }
 }
 
+@keyframes arr-drop {
+  from {
+    transform: rotate(-180deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+
 .header__list-features {
-  width: 153px;
-  height: 160px;
+  width: 9.563rem;
+  height: 10rem;
 }
 
 .header__list-company {
-  width: 116px;
-  height: 128px;
+  width: 7.25rem;
+  height: 8rem;
   left: 0;
 }
 
 .dropdown__item {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 0.938rem;
 }
 
 .dropdown__item > a:link,
 a:visited {
   display: inline-block;
-  font: var(--fw-medium) 14px / 1.14 "Epilogue", sans-serif;
   color: var(--color-mediumGray);
   transition: 0.4s ease-in-out;
 }
 
-a:hover,
-a:active {
+.dropdown__item > a:hover,
+.dropdown__item > a:active {
   color: var(--color-almostBlack);
 }
 
@@ -263,7 +260,6 @@ a:active {
   display: none;
 }
 
-/* Menu Mobile */
 .header__menu {
   background: none;
   border: none;
@@ -383,6 +379,8 @@ a:active {
     justify-content: space-between;
     padding-top: 16px;
     padding-bottom: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
   }
 
   .header__menu {
