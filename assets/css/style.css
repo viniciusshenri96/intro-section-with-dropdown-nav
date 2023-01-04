@@ -58,6 +58,11 @@ img {
   height: auto;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 a:link {
   text-decoration: none;
 }
@@ -68,6 +73,10 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   background: var(--color-almostWhite);
+}
+
+body.show {
+  background: var(--color-almostBlack);
 }
 
 /* class reusable */
@@ -86,7 +95,15 @@ body {
 
 .header__mobile {
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 1fr;
+}
+
+.icon-sunny {
+  width: 24px;
+  position: absolute;
+  left: 50%;
+  cursor: pointer;
 }
 
 .header__list {
@@ -95,11 +112,16 @@ body {
   gap: 2.5rem;
 }
 
+.header__item {
+  position: relative;
+}
+
 .header__link:link,
 .header__link:visited,
 .header__link svg path {
   color: var(--color-mediumGray);
   transition: 0.4s ease-in-out;
+  cursor: pointer;
 }
 
 .header__link:hover,
@@ -109,11 +131,36 @@ body {
   stroke: currentColor;
 }
 
-.header__link-flex {
+.header__button-dropdrow {
   display: flex;
   align-items: center;
   gap: 0.563rem;
   padding: 1.25rem 0 1.25rem 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--color-mediumGray);
+  transition: all 0.5s ease-in;
+}
+
+.header__button-dropdrow::after {
+  content: "";
+  width: 10px;
+  height: 6px;
+  background: url(../images/icon-arrow-down.svg);
+  transform: rotate(0);
+  transition: all 0.5s ease-out;
+}
+
+.header__button-dropdrow.active + .header__dropdown-menu {
+  transform: rotateX(0);
+  transition: all 0.5s 125ms ease-out;
+  opacity: 1;
+}
+
+.header__button-dropdrow.active::after {
+  transform: rotate(-180deg);
+  transition: all 0.3s ease-out;
 }
 
 .header__btn {
@@ -146,86 +193,21 @@ body {
 }
 
 /* Dropdown Menu */
-[data-dropdown] {
-  position: relative;
-  display: grid;
-}
-
-.dropdown-menu {
+.header__dropdown-menu {
   position: absolute;
   top: 3.5rem;
   right: 0;
-  display: grid;
-  row-gap: 1rem;
   padding: 1.5rem;
   background: var(--color-almostWhite);
   box-shadow: 0 0.625rem 2.5rem rgba(0, 0, 0, 0.149126);
   border-radius: 0.625rem;
   z-index: 200;
-}
-
-.dropdown-menu {
-  display: none;
-}
-
-.features__up,
-.company__up {
-  display: none;
-}
-
-.features__down,
-.company__down {
-  animation: arr-drop 0.3s forwards;
-}
-
-[data-dropdown]:hover .dropdown-menu,
-[data-dropdown].active .dropdown-menu {
+  transform: rotateX(-90deg);
+  transform-origin: top center;
+  transition: all 0.3s 125ms ease-in;
+  opacity: 0.25;
   display: grid;
-  animation: show-up 0.3s forwards;
-}
-
-[data-dropdown]:hover .features__up,
-[data-dropdown]:hover .company__up,
-[data-dropdown].active .features__up,
-[data-dropdown].active .company__up {
-  display: block;
-  animation: arr-up 0.3s forwards;
-}
-
-[data-dropdown]:hover .features__down,
-[data-dropdown]:hover .company__down,
-[data-dropdown].active .features__down,
-[data-dropdown].active .company__down {
-  display: none;
-}
-
-@keyframes show-up {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -30px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes arr-up {
-  from {
-    transform: rotate(180deg);
-  }
-  to {
-    transform: rotate(0);
-  }
-}
-
-@keyframes arr-drop {
-  from {
-    transform: rotate(-180deg);
-  }
-  to {
-    transform: rotate(0);
-  }
+  row-gap: 1rem;
 }
 
 .header__list-features {
@@ -262,7 +244,7 @@ a:visited {
   width: 100%;
   height: 100%;
   top: 0;
-  background: rgba(0, 0, 0, 0.149126);
+  background: rgba(0, 0, 0, 0.75);
   display: none;
 }
 
@@ -360,8 +342,7 @@ a:visited {
 
 @media (max-width: 50.625em) {
   .header {
-    justify-content: space-between;
-    padding: 1rem 0 1.5 0;
+    padding: 1rem 0 1.5rem 0;
     margin: 0 1rem;
   }
 
@@ -370,8 +351,11 @@ a:visited {
     justify-self: end;
     display: block;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0;
+    right: 0;
+    padding-top: 16px;
+    padding-right: 16px;
+    z-index: 300;
   }
 
   .header__menu.active::after {
@@ -391,6 +375,7 @@ a:visited {
 
   .header__mobile {
     position: absolute;
+    padding: 4.875rem 1.313rem 0 1.5rem;
     top: 0;
     right: 0;
     z-index: 1;
@@ -400,15 +385,26 @@ a:visited {
     gap: 2rem;
   }
 
-  .header__mobile.active {
-    display: block;
+  .header__mobile:has(.header__btn.active) {
+    animation: show-right 0.5s forwards;
+  }
+
+  @keyframes show-right {
+    from {
+      opacity: 0;
+      transform: translate3d(30px, 0, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
   }
 
   .header__btn {
     flex-direction: column;
     max-width: 100%;
     gap: 1rem;
-    padding: 0 1.313rem 0 1.5rem;
+    padding: 0 1.313rem 0rem 1.5rem;
     height: 100vh;
     display: none;
   }
@@ -420,7 +416,6 @@ a:visited {
   .header__list {
     flex-direction: column;
     align-items: flex-start;
-    padding: 4.875rem 1.313rem 0 1.5rem;
     gap: 1rem;
     display: none;
   }
@@ -430,20 +425,28 @@ a:visited {
     display: flex;
   }
 
-  .header__link-flex {
+  .header__button-dropdrow {
     padding: 0;
   }
 
-  .dropdown-menu {
+  .header__dropdown-menu {
     position: static;
     padding: 0;
     background: none;
     box-shadow: none;
-    align-content: start;
+    padding-top: 18px;
+    padding-left: 25px;
   }
 
-  [data-dropdown] {
-    gap: 1.125rem;
+  .header__item {
+    height: 0;
+    padding-bottom: 16px;
+    transform-origin: top center;
+    transition: all 0.3s 125ms ease-in;
+  }
+
+  .header__item.active {
+    padding-bottom: 156px;
   }
 
   .header__link:link,
@@ -453,7 +456,8 @@ a:visited {
 
   .header__list-features {
     width: 7.438rem;
-    height: 9.5rem;
+    height: max-content;
+    margin-bottom: 0.5rem;
   }
 
   .header__list-company {
@@ -462,16 +466,8 @@ a:visited {
     margin-bottom: 0.5rem;
   }
 
-  [data-dropdown].active .dropdown-menu {
-    margin-left: 1.5rem;
-  }
-
   .header__link-flex {
     justify-self: start;
-  }
-
-  .overlay.active {
-    display: block;
   }
 
   .hero {
@@ -520,6 +516,10 @@ a:visited {
   .hero__img {
     max-width: 60%;
     margin: auto;
+  }
+
+  .overlay.active {
+    display: block;
   }
 }
 
