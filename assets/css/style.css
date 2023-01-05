@@ -120,6 +120,13 @@ body.show {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+.dark-mode {
+  position: absolute;
+  width: 24px;
+  left: 50%;
 }
 
 .header__menu-mobile {
@@ -184,10 +191,13 @@ body.show {
   display: grid;
   row-gap: 1rem;
   z-index: 200;
-  display: none;
+  transform: rotateX(-90deg);
+  visibility: hidden;
 }
 
 .header__button-dropdrow.active + .header__dropdown-menu {
+  transform: rotateX(0);
+  visibility: visible;
   display: grid;
   animation: show-drop 0.5s ease-in-out;
 }
