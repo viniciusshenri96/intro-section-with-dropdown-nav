@@ -1,15 +1,17 @@
 export default function showDropdown(e) {
+  if (e.type === "touchstart") {
+    document.removeEventListener("click", showDropdown);
+  }
   let dropdownButton;
   let currentDropdown;
   const classActive = "active";
   dropdownButton = e.target.matches("[data-dropdown-button]");
+  dropdownButton = e.target.closest("[data-dropdown-button]");
+  currentDropdown = e.target.closest("[data-dropdown]");
 
   if (!dropdownButton && e.target.closest("[data-dropdown]")) return;
 
   if (dropdownButton) {
-    currentDropdown = e.target.closest("[data-dropdown]");
-    dropdownButton = e.target.closest("[data-dropdown-button]");
-
     currentDropdown.classList.toggle(classActive);
     dropdownButton.classList.toggle(classActive);
     if (!currentDropdown.classList.contains(classActive)) {
@@ -29,4 +31,11 @@ export default function showDropdown(e) {
   });
 }
 
+window.addEventListener("resize", function () {
+  if (window.matchMedia("min-widh: 1400px")) {
+    document.addEventListener("click", showDropdown);
+  }
+});
+
+document.addEventListener("touchstart", showDropdown);
 document.addEventListener("click", showDropdown);

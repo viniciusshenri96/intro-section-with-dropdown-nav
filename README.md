@@ -32,6 +32,8 @@ This is a challenge on the Mentor frontend website, where I was able to put into
 
 In this project I focused a lot on creating the Mobile and Dropdown menu, and reviewed my knowledge with bubble which is a type of event control
 
+MENU MOBILE:
+
 I also created this function called clickOutside it will make the bubble effect and when the user clicks outside the dropdown menu, it will be closed, we can see in this gif:
 
 ![](./readme/gif.gif)
@@ -39,13 +41,13 @@ I also created this function called clickOutside it will make the bubble effect 
 <h3>Function:</h3>
 
 ```js
-function clickOutside(element, events, callback) {
+function clickOutside(element, callback) {
   const html = document.querySelector("html");
   const outside = "data-outside";
 
   if (!element.hasAttribute(outside)) {
     setTimeout(() => {
-      html.addEventListener(events, handleOutsideClick);
+      html.addEventListener("click", handleOutsideClick);
     });
     element.setAttribute(outside, "");
   }
@@ -53,13 +55,38 @@ function clickOutside(element, events, callback) {
     if (!element.contains(event.target)) {
       element.removeAttribute(outside);
       setTimeout(() => {
-        html.removeEventListener(events, handleOutsideClick);
+        html.removeEventListener("click", handleOutsideClick);
       });
       callback();
     }
   }
 }
 ```
+
+DROPDOWN MENU:
+
+<h3>hiding the submenu when some other one is active:</h3>
+
+```js
+document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
+  if (dropdown === currentDropdown) return;
+  dropdown.classList.remove(classActive);
+});
+```
+
+Exemple:
+
+![](./readme/gif2.gif)
+
+if the click happens inside the submenu it will not be hidden, if you click outside the submenu it will be hidden, this happens if the condition below is true.
+
+```js
+if (!dropdownButton && e.target.closest("[data-dropdown]")) return;
+```
+
+Exemple:
+
+![](./readme/gif3.gif)
 
 ## Links
 

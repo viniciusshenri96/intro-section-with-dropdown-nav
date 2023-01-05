@@ -1,20 +1,20 @@
 import outside from "./outsideClick.js";
-// Menu Mobile
+
 const headerList = document.querySelector(".header__list");
 const headerBtn = document.querySelector(".header__btn");
-const headerMenu = document.querySelector("[data-mobilebutton]");
+const mobileBtn = document.querySelector("[data-mobilebutton]");
 const menuClose = document.querySelector(".menu-close");
 const overlay = document.querySelector(".overlay");
 const classActive = "active";
 
 const classListProMenuMobile = function (pro) {
-  const elements = [headerList, headerBtn, headerMenu, menuClose, overlay];
+  const elements = [headerList, headerBtn, mobileBtn, menuClose, overlay];
   elements.forEach((el) => el.classList[pro](classActive));
 };
 
 export default function openMenu() {
   classListProMenuMobile("toggle");
-
+  console.log();
   if (!this.classList.contains(classActive))
     return this.setAttribute("aria-expanded", "false");
 
@@ -25,4 +25,4 @@ export default function openMenu() {
   });
 }
 
-headerMenu.addEventListener("click", openMenu);
+mobileBtn.addEventListener("click", openMenu);
