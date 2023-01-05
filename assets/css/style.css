@@ -20,6 +20,13 @@
   padding: 0;
 }
 
+/* better for people who browse with the keyboard and know where they are on the site, so I set a different style, making it more visible, taking it from the default.
+ */
+*:focus-visible {
+  outline: var(--color-mediumGray) dotted 4px;
+  outline-offset: 4px;
+}
+
 /**
  * To hide content visually.
  * For more information: https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034
@@ -36,10 +43,27 @@
   white-space: nowrap !important;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
+ul {
   list-style: none;
+}
+
+button,
+[type="button"] {
+  -webkit-appearance: button;
+  text-transform: none;
+  overflow: visible;
 }
 
 /* Set core root defaults */
@@ -157,19 +181,28 @@ body.show {
   background: var(--color-almostWhite);
   box-shadow: 0 0.625rem 2.5rem rgba(0, 0, 0, 0.15);
   border-radius: 0.625rem;
-  transform: rotateX(-90deg);
-  transform-origin: top center;
-  transition: all 0.3s 125ms ease-in;
   display: grid;
   row-gap: 1rem;
   z-index: 200;
-  opacity: 0.25;
+  display: none;
 }
 
 .header__button-dropdrow.active + .header__dropdown-menu {
-  transform: rotateX(0);
-  transition: all 0.5s 125ms ease-out;
-  opacity: 1;
+  display: grid;
+  animation: show-drop 0.5s ease-in-out;
+}
+
+@keyframes show-drop {
+  0% {
+    transform: rotate3d(0, 2, 0, 0.5turn)
+      translate3d(-1.25rem, -1.5rem, -6.25rem);
+    transform-origin: top center;
+    opacity: 0.25;
+  }
+  100% {
+    transform: rotate3d(0, 0, 0, 0turn) translate3d(0, 0, 0, 0);
+    opacity: 1;
+  }
 }
 
 .header__list-features {

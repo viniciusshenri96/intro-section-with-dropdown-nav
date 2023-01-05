@@ -2,6 +2,7 @@ export default function showDropdown(e) {
   if (e.type === "touchstart") {
     document.removeEventListener("click", showDropdown);
   }
+  console.log(e);
   let dropdownButton;
   let currentDropdown;
   const classActive = "active";
