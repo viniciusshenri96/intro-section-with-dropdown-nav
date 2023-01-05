@@ -1,10 +1,10 @@
 import outside from "./outsideClick.js";
 
-const headerList = document.querySelector(".header__list");
-const headerBtn = document.querySelector(".header__btn");
-const mobileBtn = document.querySelector("[data-mobilebutton]");
-const menuClose = document.querySelector(".menu-close");
-const overlay = document.querySelector(".overlay");
+const headerList = document.querySelector("[data-menu-list]");
+const headerBtn = document.querySelector("[data-menu-btn]");
+const mobileBtn = document.querySelector("[data-menu-button]");
+const menuClose = document.querySelector("[data-menu-close]");
+const overlay = document.querySelector("[data-menu-overlay]");
 const classActive = "active";
 
 const classListProMenuMobile = function (pro) {

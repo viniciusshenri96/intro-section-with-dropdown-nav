@@ -20,16 +20,16 @@
 
     <div class="header__mobile">
       <nav class="header__nav">
-        <button class="header__menu-mobile" data-mobileButton type="button" aria-expanded="false" aria-controls="menu">
+        <button class="header__menu-mobile" data-menu-button type="button" aria-expanded="false" aria-controls="menu">
           <span class="sr-only ">menu</span>
-          <svg width="32" class="menu-close" height="18" xmlns="http://www.w3.org/2000/svg">
+          <svg width="32" class="menu-close" data-menu-close height="18" xmlns="http://www.w3.org/2000/svg">
             <g fill="#151515" fill-rule="evenodd">
               <path d="M0 0h32v2H0zM0 8h32v2H0zM0 16h32v2H0z" />
             </g>
           </svg>
         </button>
 
-        <ul class="header__list" id="menu" role="list">
+        <ul class="header__list" data-menu-list id="menu" role="list">
           <li class="header__item" data-dropdown aria-controls="dropdownFeatures" aria-expanded="false">
             <button type="button" class="header__button-dropdrow font-link" data-dropdown-button>
               Features
@@ -102,7 +102,7 @@
           </li>
         </ul>
       </nav>
-      <div class="header__btn">
+      <div class="header__btn" data-menu-btn>
         <a class="btn font-link" href="/">Login</a>
         <a class="btn btn--transparent font-link" href="/">Register</a>
       </div>
@@ -135,7 +135,7 @@
       </picture>
     </section>
   </main>
-  <div class="overlay"></div>
+  <div class="overlay" data-menu-overlay></div>
 </body>
 
 </html>
