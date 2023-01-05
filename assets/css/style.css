@@ -107,6 +107,10 @@ body.show {
   font: var(--fw-medium) 0.875rem / 1.14 "Epilogue", sans-serif;
 }
 
+.font-link--dark {
+  color: var(--color-almostWhite);
+}
+
 .header {
   display: grid;
   gap: 3.875rem;
@@ -121,12 +125,6 @@ body.show {
   align-items: center;
   grid-template-columns: 1fr 1fr;
   position: relative;
-}
-
-.dark-mode {
-  position: absolute;
-  width: 24px;
-  left: 50%;
 }
 
 .header__menu-mobile {
@@ -169,6 +167,10 @@ body.show {
 
 .arr__down path {
   transition: all 0.5s ease-out;
+}
+
+.arr__down--dark path {
+  stroke: var(--color-almostWhite);
 }
 
 .header__button-dropdrow:hover .arr__down path,
